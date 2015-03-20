@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#TODO(benley): --dryrun isn't actually implemented.
-
 set -o errexit
 
 OS=$(uname)
@@ -21,7 +19,6 @@ function LogError() {
 }
 
 function PrintUsage() {
-#FIXME(benley): implement this
 :
 }
 
@@ -73,7 +70,6 @@ function DoCleanUps() {
 function main() {
   export FLAGS_force=0
   export FLAGS_dryrun=0
-  #TODO(benley): is export necessary here?
 
   for arg in $@; do
     case $arg in

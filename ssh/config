@@ -1,5 +1,3 @@
-Host zoiks.net *.zoiks.net *.xkcd.com nyan*.*
-User benley
 
 # ControlPersist doesn't work with OpenSSH_4.5p1 from debian Squeeze (stable)
 # It *does* work with: Ubuntu 12.04, Ubuntu 12.10, MacOS 10.8, [...]
@@ -10,9 +8,6 @@ User benley
 #GSSAPIAuthentication no
 #GSSAPIKeyExchange no
 
-Host aram.xkcd.com
-ForwardAgent yes
-Compression yes
 
 Host github.com
 Compression yes
@@ -20,61 +15,12 @@ ForwardAgent no
 ForwardX11 no
 ForwardX11Trusted no
 
-Host maya maya.zoiks.net
-ForwardX11 no
-ForwardX11Trusted no
-Hostname maya.zoiks.net
-#Port 2222
-Compression yes
-ControlMaster auto
-#ControlPersist yes
-ControlPath /tmp/.control_%r@%h:%p.%l
-
-Host nyanbox.z nb.z
-ForwardX11 yes
-ForwardX11Trusted yes
-Compression yes
-ForwardAgent yes
-ProxyCommand ssh -q sf.zoiks.net nc -q0 nb 22
-#HostName sf.zoiks.net
-#Port 2224
-#ControlMaster auto
-##ControlPersist yes
-#ControlPath /tmp/.control_%r@%h:%p.%l
-
-Host zoiks.net *.zoiks.net
-GSSAPIAuthentication no
-GSSAPIKeyExchange no
-#PreferredAuthentications publickey,password
-ForwardAgent yes
-Compression yes
-
-# VMs
-Host vm-ubudev1.local vm1 vm-ubudev1
-HostName 192.168.56.2
-ForwardAgent yes
-Compression no
-ForwardX11 yes
-ForwardX11Trusted yes
-ControlPersist yes
-ControlMaster auto
-ControlPath /tmp/.ssh_%r@%h:%p
 
 Host jenkins
-Port 51225
-User "ben@cloudscaling.com"
+Port 8088
+User "imran@cloudscaling.com"
 RequestTTY yes
-HostName lab21.hc.cloudscaling.com
-
-Host *.jenkins.cloudscaling.com
-Port 51225
-User ben@cloudscaling.com
-ProxyCommand ssh -l ben@cloudscaling.com -p 51225 lab21.hc.cloudscaling.com diagnose-tunnel -suffix .jenkins.cloudscaling.com %h
-UserKnownHostsFile ~/.ssh/jenkins_known_hosts
-HashKnownHosts no
-StrictHostKeyChecking no
-GSSAPIAuthentication no
-GSSAPIKeyExchange no
+HostName lab21.hc.cloudscaling.com:8088
 
 Host pd pd.cloudscaling.com
 HostName pd.cloudscaling.com
@@ -86,27 +32,6 @@ ForwardX11 no
 ForwardX11Trusted no
 ControlMaster auto
 ControlPath /tmp/.ssh_%r@%h:%p
-
-Host admin.lab admin.lab.cloudscaling.com
-HostName admin.lab.cloudscaling.com
-Port 3223
-ForwardAgent yes
-ForwardX11 no
-ForwardX11Trusted no
-Compression yes
-ControlPersist 180
-ControlMaster auto
-GSSAPIAuthentication yes
-GSSAPIKeyExchange yes
-GSSAPIDelegateCredentials yes
-GSSAPITrustDNS no
-
-Host lambchop lambchop.sfo lambchop.sfo.cloudscaling.com
-HostName lambchop.sfo.cloudscaling.com
-ForwardAgent yes
-ForwardX11 yes
-ForwardX11Trusted yes
-#ProxyCommand ssh -q admin.lab.cloudscaling.com nc -q0 lambchop.sfo.cloudscaling.com 22
 
 Host *.cloudscaling.com *.sfo *.hc *.dev *.lab
 ForwardX11 yes
@@ -142,7 +67,7 @@ GSSAPIKeyExchange yes
 GSSAPITrustDNS yes
 
 Host *
-User ben
+User hayderimran7
 GSSAPIAuthentication yes
 GSSAPIDelegateCredentials yes
 GSSAPIKeyExchange yes
