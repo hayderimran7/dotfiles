@@ -41,9 +41,7 @@ dopath() {
 #  . /etc/bashrc
 #fi
 
-source $HOME/bin/benlib.sh
 alias getenv='source "$HOME"/.ssh/.getenv'
-alias mz='mosh zoiks.net -- $@'
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
@@ -137,8 +135,6 @@ export HISTSIZE=9999
 export HISTFILESIZE=9999
 
 # Debian dev stuff
-export DEBEMAIL='ben@cloudscaling.com'
-export DEBFULLNAME='Benjamin Staffin'
 alias lintian="lintian --color=auto"
 
 if [[ -d "$HOME/.bashrc.d" ]]; then
@@ -152,7 +148,6 @@ fi
 [[ -e /usr/local/bin/irb19 ]] && alias irb=/usr/local/bin/irb19
 [[ -e /usr/local/bin/gem19 ]] && alias gem=/usr/local/bin/gem19
 
-alias gerrit="ssh ben@pd.cloudscaling.com -p 29418 -- gerrit \$@"
 
 [[ "$OS" == "Darwin" && -e '/usr/local/bin/ctags' ]] && \
     alias ctags='/usr/local/bin/ctags'
